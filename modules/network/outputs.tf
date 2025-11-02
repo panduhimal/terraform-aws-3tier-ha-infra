@@ -4,14 +4,30 @@ output "vpc_id" {
 }
 
 output "public_subnet_ids" {
-  value = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "public"]
+  description = "List of Public Subnet ID."
+  value       = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "public"]
 }
 
 output "app_subnet_ids" {
-  value = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "app"]
+  description = "List of Private App Subnet ID."
+  value       = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "app"]
 
 }
 
 output "db_subnet_ids" {
-  value = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "db"]
+  description = "List of Private Data Subnet ID."
+  value       = [for k, v in aws_subnet.this : v.id if var.subnets[k].type == "db"]
 }
+
+output "igw_id" {
+  description = "The ID of the Internet Gateway."
+  value       = aws_internet_gateway.igw.id
+}
+
+output "public_rt_id" {
+  description = "The ID of the public route table."
+  value       = aws_route_table.public_rt.id
+}
+
+
+

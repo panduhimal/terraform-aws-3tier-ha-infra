@@ -17,3 +17,13 @@ output "db_subnet_ids" {
   description = "Private database subnet IDs created by the network module."
   value       = module.vpc.db_subnet_ids
 }
+
+output "igw_id" {
+  description = "The ID of the Internet Gateway."
+  value       = module.vpc.igw_id
+}
+
+output "public_rt_id" {
+  description = "The ID of the public route table."
+  value       = module.vpc.public_rt_id
+}
